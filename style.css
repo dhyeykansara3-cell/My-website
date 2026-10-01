@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+
+    /* Creative animated background */
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 128, 0.35), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(0, 200, 255, 0.35), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(120, 0, 255, 0.35), transparent 35%),
+        linear-gradient(135deg, #080014, #10002b, #001b2e, #080014);
+
+    background-size: 200% 200%;
+    animation: backgroundMove 12s ease infinite;
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Floating glowing circles */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    z-index: -1;
+}
+
+body::before {
+    width: 250px;
+    height: 250px;
+    background: #ff0099;
+    top: 15%;
+    left: -80px;
+    animation: float1 7s infinite alternate;
+}
+
+body::after {
+    width: 300px;
+    height: 300px;
+    background: #00d9ff;
+    right: -100px;
+    bottom: 10%;
+    animation: float2 8s infinite alternate;
+}
+
+@keyframes float1 {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(120px);
+    }
+}
+
+@keyframes float2 {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-120px);
+    }
+}
+
+/* Navbar */
+
+nav {
+    width: 92%;
+    margin: 25px auto;
+    padding: 18px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(18px);
+
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+
+    background: linear-gradient(90deg, #00eaff, #ff00a8);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00eaff;
+    text-shadow: 0 0 15px #00eaff;
+}
+
+/* Hero */
+
+.hero {
+    width: 90%;
+    margin: 70px auto;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 60px;
+    margin-bottom: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #00eaff,
+        #ffffff,
+        #ff00a8
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation: glowText 3s infinite alternate;
+}
+
+@keyframes glowText {
+    from {
+        filter: drop-shadow(0 0 5px #00eaff);
+    }
+
+    to {
+        filter: drop-shadow(0 0 25px #ff00a8);
+    }
+}
+
+.hero p {
+    color: #d8d8d8;
+    font-size: 18px;
+}
+
+/* Products */
+
+.products {
+    width: 90%;
+    margin: 50px auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+}
+
+/* Product Card */
+
+.product-card {
+    position: relative;
+    padding: 20px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 10px 40px rgba(0,0,0,0.35);
+
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: "";
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    background: #00eaff;
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    top: -80px;
+    right: -80px;
+
+    opacity: 0.4;
+}
+
+.product-card:hover {
+    transform: translateY(-15px) scale(1.03);
+
+    box-shadow:
+        0 20px 60px rgba(0, 234, 255, 0.25);
+}
+
+.product-card img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    transition: 0.5s;
+}
+
+.product-card:hover img {
+    transform: scale(1.08);
+}
+
+.product-card h2 {
+    margin-top: 18px;
+    font-size: 21px;
+}
+
+.price {
+    color: #00eaff;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+/* Button */
+
+button {
+    width: 100%;
+    padding: 13px;
+
+    border: none;
+    border-radius: 14px;
+
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    background: linear-gradient(
+        90deg,
+        #00c6ff,
+        #0072ff,
+        #ff00a8
+    );
+
+    background-size: 200%;
+
+    transition: 0.4s;
+}
+
+button:hover {
+    background-position: right;
+    transform: scale(1.04);
+
+    box-shadow:
+        0 0 25px rgba(0, 234, 255, 0.6);
+}
+
+/* Section title */
+
+.section-title {
+    text-align: center;
+    font-size: 35px;
+    margin: 60px 0 30px;
+
+    text-shadow:
+        0 0 15px rgba(0,234,255,0.5);
+}
+
+/* Footer */
+
+footer {
+    margin-top: 80px;
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(0,0,0,0.35);
+    border-top: 1px solid rgba(255,255,255,0.15);
+
+    color: #bbb;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 8px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+}
+
+આ design માં શું new લાગશે: ✨
+
+- Animated multicolor background
+- Floating glowing lights
+- Glassmorphism navbar
+- Neon product cards
+- Hover પર product zoom
+- Animated gradient buttons
+- Glowing heading
+- Mobile responsive design
+
+જો તારા હાલના "index.php" માં product images + cards પહેલેથી છે, તો આ CSS લગાવ્યા પછી આખી website નો look એકદમ premium futuristic shopping website જેવો થઈ જશે.
